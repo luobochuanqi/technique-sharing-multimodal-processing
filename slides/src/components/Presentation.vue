@@ -361,6 +361,8 @@ onUnmounted(() => {
         :class="{ active: currentSlide === 3 }"
       >
         <div class="content-wrapper">
+          <h2 class="slide-intro-title fade-in">从纯文本到全模态：AI "感知系统"的代际跃迁</h2>
+          
           <div class="omni-evolution-layout">
             <div class="evolution-left slide-left">
               <div class="arch-compare-cards">
@@ -655,7 +657,8 @@ onUnmounted(() => {
 </template>
 
 <style>
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap");
 
 :root {
   /* Boyuan Brand Colors */
@@ -674,34 +677,64 @@ onUnmounted(() => {
   --bg-gray: #f0f2f5;
   --bg-light: #f8f9fa;
   --bg-blue-subtle: rgba(21, 115, 231, 0.04);
-  --text-primary: #1a1a1a;
-  --text-secondary: #666666;
-  --text-muted: #999999;
-  --border-color: #e0e0e0;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #94a3b8;
+  --border-color: #e2e8f0;
   --border-blue: rgba(21, 115, 231, 0.2);
   --accent-blue: #1573e7;
 
-  /* Spacing System */
-  --space-xs: 4px;
-  --space-sm: 8px;
-  --space-md: 16px;
-  --space-lg: 24px;
-  --space-xl: 32px;
-  --space-2xl: 48px;
-  --space-3xl: 64px;
+  /* Spacing System - 8px grid */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
 
-  /* Typography Scale */
-  --text-xs: 12px;
-  --text-sm: 14px;
-  --text-base: 16px;
-  --text-lg: 18px;
-  --text-xl: 22px;
-  --text-2xl: 28px;
-  --text-3xl: 36px;
-  --text-4xl: 48px;
+  /* Typography Scale - 1.25 Major Third */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.5rem;
+  --text-2xl: 1.875rem;
+  --text-3xl: 2.25rem;
+  --text-4xl: 2.813rem;
 
-  --font-main: "Noto Sans SC", -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-mono: "JetBrains Mono", "Consolas", monospace;
+  /* Line Heights */
+  --leading-none: 1;
+  --leading-tight: 1.25;
+  --leading-snug: 1.375;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.625;
+  --leading-loose: 2;
+
+  /* Font Weights */
+  --font-normal: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+
+  /* Font Families */
+  --font-main: "Noto Sans SC", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", "Consolas", "Monaco", monospace;
+
+  /* Letter Spacing */
+  --tracking-tighter: -0.02em;
+  --tracking-tight: -0.01em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.025em;
+  --tracking-wider: 0.05em;
+  --tracking-widest: 0.1em;
+}
+
+/* Global Typography Settings */
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 * {
@@ -720,6 +753,10 @@ onUnmounted(() => {
   font-family: var(--font-main);
   background: var(--bg-white);
   color: var(--text-primary);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  font-weight: var(--font-normal);
+  letter-spacing: var(--tracking-normal);
 }
 
 /* Blue Geometric Background */
@@ -852,20 +889,21 @@ onUnmounted(() => {
 }
 
 .cover-title {
-  font-size: clamp(42px, 4vw, 60px);
-  font-weight: 900;
+  font-size: clamp(3rem, 5vw, 4.5rem);
+  font-weight: var(--font-bold);
   color: var(--text-primary);
-  letter-spacing: 2px;
-  line-height: 1.1;
+  letter-spacing: var(--tracking-wide);
+  line-height: var(--leading-tight);
   margin: 0;
 }
 
 .cover-subtitle {
-  font-size: clamp(24px, 2.5vw, 32px);
-  font-weight: 500;
+  font-size: clamp(1.5rem, 2.5vw, 2.25rem);
+  font-weight: var(--font-medium);
   color: var(--text-secondary);
-  letter-spacing: 1px;
+  letter-spacing: var(--tracking-wide);
   margin-top: var(--space-sm);
+  line-height: var(--leading-snug);
 }
 
 .cover-year {
@@ -877,9 +915,9 @@ onUnmounted(() => {
   padding: var(--space-md) var(--space-xl);
   background: linear-gradient(135deg, #4a7ba7 0%, #3d6b8f 100%);
   color: white;
-  font-size: clamp(28px, 3vw, 40px);
-  font-weight: 300;
-  letter-spacing: 16px;
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: var(--font-normal);
+  letter-spacing: var(--tracking-widest);
   border-radius: 8px;
   box-shadow: 0 8px 24px rgba(74, 123, 167, 0.3);
   transition: all 0.3s;
@@ -967,18 +1005,19 @@ onUnmounted(() => {
 
 .toc-section-title {
   font-size: var(--text-xl);
-  font-weight: 500;
+  font-weight: var(--font-medium);
   color: var(--boyuan-blue-mid);
-  /* margin-bottom: var(--space-sm); */
   margin-bottom: var(--space-xs);
-  letter-spacing: -0.3px;
+  letter-spacing: var(--tracking-tight);
+  line-height: var(--leading-snug);
 }
 
 .toc-label {
   font-size: var(--text-xs);
   color: var(--text-muted);
-  letter-spacing: 6px;
+  letter-spacing: var(--tracking-widest);
   text-transform: uppercase;
+  font-weight: var(--font-medium);
 }
 
 .toc-list {
@@ -1004,11 +1043,11 @@ onUnmounted(() => {
 }
 
 .toc-num {
-  font-size: 40px;
-  font-weight: 800;
+  font-size: var(--text-4xl);
+  font-weight: var(--font-bold);
   color: var(--text-primary);
   min-width: 56px;
-  line-height: 1;
+  line-height: var(--leading-none);
   background: var(--boyuan-blue-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -1033,16 +1072,16 @@ onUnmounted(() => {
 .toc-part {
   font-size: var(--text-xs);
   color: var(--text-muted);
-  letter-spacing: 1.5px;
+  letter-spacing: var(--tracking-wide);
   text-transform: uppercase;
-  font-weight: 500;
+  font-weight: var(--font-medium);
 }
 
 .toc-main {
   font-size: var(--text-base);
-  font-weight: 500;
+  font-weight: var(--font-medium);
   color: var(--text-primary);
-  line-height: 1.5;
+  line-height: var(--leading-normal);
 }
 
 /* ===== Part Cover Slides ===== */
@@ -1103,20 +1142,20 @@ onUnmounted(() => {
   background: var(--boyuan-blue-gradient);
   color: white;
   font-size: var(--text-sm);
-  font-weight: 600;
-  letter-spacing: 3px;
+  font-weight: var(--font-semibold);
+  letter-spacing: var(--tracking-wide);
   border-radius: 24px;
   margin-bottom: var(--space-xl);
   box-shadow: 0 4px 16px rgba(21, 115, 231, 0.3);
 }
 
 .part-title {
-  font-size: clamp(42px, 5vw, 64px);
-  font-weight: 800;
+  font-size: clamp(2.625rem, 5vw, 4rem);
+  font-weight: var(--font-bold);
   color: var(--boyuan-blue-mid);
   margin-bottom: var(--space-md);
-  letter-spacing: -1px;
-  line-height: 1.1;
+  letter-spacing: var(--tracking-tight);
+  line-height: var(--leading-tight);
   background: var(--boyuan-blue-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -1124,11 +1163,11 @@ onUnmounted(() => {
 }
 
 .part-subtitle {
-  font-size: clamp(18px, 2vw, 24px);
+  font-size: clamp(1.125rem, 2vw, 1.5rem);
   color: var(--text-secondary);
-  letter-spacing: -0.3px;
-  line-height: 1.5;
-  font-weight: 400;
+  letter-spacing: var(--tracking-normal);
+  line-height: var(--leading-normal);
+  font-weight: var(--font-normal);
 }
 
 .part-decoration-right {
@@ -1186,11 +1225,141 @@ onUnmounted(() => {
 }
 
 /* Omni Evolution Layout (Slide 4) */
+.slide-intro-title {
+  font-size: clamp(1.5rem, 2vw, 1.875rem);
+  font-weight: var(--font-bold);
+  color: var(--text-primary);
+  margin-bottom: var(--space-2xl);
+  text-align: center;
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+}
+
 .omni-evolution-layout {
   display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: var(--space-2xl);
-  margin-bottom: var(--space-xl);
+  grid-template-columns: 1fr 1.1fr;
+  gap: var(--space-3xl);
+  align-items: center;
+}
+
+.evolution-left {
+  padding: 0;
+}
+
+.arch-compare-cards {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+.arch-card {
+  padding: var(--space-xl);
+  background: var(--bg-white);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  transition: all 0.3s;
+}
+
+.arch-card.old {
+  background: linear-gradient(
+    135deg,
+    rgba(107, 114, 128, 0.04) 0%,
+    var(--bg-white) 100%
+  );
+  border-left: 4px solid #9ca3af;
+}
+
+.arch-card.new {
+  background: linear-gradient(
+    135deg,
+    rgba(21, 115, 231, 0.06) 0%,
+    var(--bg-white) 100%
+  );
+  border-left: 4px solid var(--boyuan-blue-mid);
+}
+
+.arch-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 32px rgba(21, 115, 231, 0.1);
+  border-color: var(--boyuan-blue-light);
+}
+
+.arch-card-title {
+  font-size: var(--text-lg);
+  font-weight: var(--font-bold);
+  color: var(--text-primary);
+  margin-bottom: var(--space-md);
+  line-height: var(--leading-snug);
+}
+
+.arch-card.new .arch-card-title {
+  color: var(--boyuan-blue-mid);
+}
+
+.arch-card-flow {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  line-height: var(--leading-relaxed);
+  font-family: var(--font-mono);
+  background: var(--bg-gray);
+  padding: var(--space-md);
+  border-radius: 8px;
+  margin-bottom: var(--space-md);
+  border: 1px solid var(--border-color);
+}
+
+.arch-card-issue {
+  font-size: var(--text-sm);
+  color: #dc2626;
+  font-weight: var(--font-semibold);
+  padding: var(--space-sm) var(--space-md);
+  background: rgba(220, 38, 38, 0.06);
+  border-radius: 6px;
+  display: inline-block;
+}
+
+.evolution-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-lg);
+}
+
+.stack-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.evolution-image {
+  max-width: 100%;
+  max-height: 55vh;
+  object-fit: contain;
+  border-radius: 16px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-white);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s;
+}
+
+.stack-item:hover .evolution-image {
+  transform: scale(1.02);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+}
+
+.image-label {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  text-align: center;
+  font-style: italic;
+  font-weight: var(--font-medium);
 }
 
 .evolution-left {
