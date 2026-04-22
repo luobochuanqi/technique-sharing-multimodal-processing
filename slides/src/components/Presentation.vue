@@ -413,9 +413,16 @@ onUnmounted(() => {
                   :key="idx"
                   :class="{ highlight: card.highlight }"
                 >
-                  <div class="timeline-marker" :style="{ background: card.color }"></div>
+                  <div
+                    class="timeline-marker"
+                    :style="{ background: card.color }"
+                  ></div>
                   <div class="timeline-content">
-                    <span class="timeline-year" :style="{ color: card.color }">{{ card.year }}</span>
+                    <span
+                      class="timeline-year"
+                      :style="{ color: card.color }"
+                      >{{ card.year }}</span
+                    >
                     <span class="timeline-title">{{ card.title }}</span>
                     <span class="timeline-desc">{{ card.desc }}</span>
                   </div>
@@ -426,14 +433,6 @@ onUnmounted(() => {
               <div class="image-stack">
                 <div class="stack-item">
                   <img
-                    src="/images/traditional_vs_omni.png"
-                    alt="全模态架构对比"
-                    class="evolution-image"
-                  />
-                  <span class="image-label">全模态架构对比</span>
-                </div>
-                <div class="stack-item">
-                  <img
                     src="/images/illustrated.webp"
                     alt="大模型图文输出"
                     class="evolution-image"
@@ -442,10 +441,6 @@ onUnmounted(() => {
                 </div>
               </div>
             </div>
-          </div>
-          <div class="omni-note fade-in">
-            <span class="omni-label">Omni-Native</span>
-            <span class="omni-text">原生全模态模型在设计之初就将多模态能力作为基因，统一架构处理所有输入输出</span>
           </div>
         </div>
       </div>
@@ -458,7 +453,11 @@ onUnmounted(() => {
         <div class="content-wrapper">
           <h2 class="section-title fade-in">全模态架构对比</h2>
           <div class="omni-arch-compare fade-in">
-            <img src="/images/traditional_vs_omni.png" alt="全模态架构对比" class="arch-compare-img" />
+            <img
+              src="/images/traditional_vs_omni.png"
+              alt="全模态架构对比"
+              class="arch-compare-img"
+            />
           </div>
         </div>
       </div>
@@ -501,7 +500,11 @@ onUnmounted(() => {
             <div class="ocr-left fade-in">
               <h3 class="ocr-subtitle">架构对比</h3>
               <div class="ocr-arch-image">
-                <img src="/images/ocr_low.png" alt="OCR 架构对比" class="ocr-arch-img" />
+                <img
+                  src="/images/ocr_low.png"
+                  alt="OCR 架构对比"
+                  class="ocr-arch-img"
+                />
               </div>
               <div class="arch-compare-notes">
                 <div
@@ -652,11 +655,13 @@ onUnmounted(() => {
               <div class="output-card">
                 <span class="output-icon">📋</span>
                 <span class="output-label">结构化输出</span>
-                <pre class="output-json">{
+                <pre class="output-json">
+{
   "商户": "星巴克",
   "日期": "2026-04-17",
   "金额": "58.00"
-}</pre>
+}</pre
+                >
               </div>
             </div>
           </div>
@@ -1029,14 +1034,15 @@ onUnmounted(() => {
 }
 
 .toc-header {
-  margin-bottom: var(--space-2xl);
+  margin-bottom: var(--space-lg);
 }
 
 .toc-section-title {
   font-size: var(--text-xl);
   font-weight: 500;
   color: var(--boyuan-blue-mid);
-  margin-bottom: var(--space-sm);
+  /* margin-bottom: var(--space-sm); */
+  margin-bottom: var(--space-xs);
   letter-spacing: -0.3px;
 }
 
@@ -1270,16 +1276,6 @@ onUnmounted(() => {
   position: relative;
 }
 
-.timeline-vertical::before {
-  content: "";
-  position: absolute;
-  left: 20px;
-  top: 30px;
-  bottom: 30px;
-  width: 2px;
-  background: linear-gradient(180deg, var(--border-color) 0%, var(--boyuan-blue-mid) 50%, var(--border-color) 100%);
-}
-
 .timeline-item {
   display: flex;
   align-items: flex-start;
@@ -1300,7 +1296,11 @@ onUnmounted(() => {
 }
 
 .timeline-item.highlight {
-  background: linear-gradient(135deg, var(--bg-blue-subtle) 0%, var(--bg-white) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--bg-blue-subtle) 0%,
+    var(--bg-white) 100%
+  );
   border-color: var(--boyuan-blue-mid);
   box-shadow: 0 8px 24px rgba(21, 115, 231, 0.15);
 }
@@ -1311,7 +1311,9 @@ onUnmounted(() => {
   border-radius: 50%;
   flex-shrink: 0;
   margin-top: 6px;
-  box-shadow: 0 0 0 3px var(--bg-white), 0 0 0 5px currentColor;
+  box-shadow:
+    0 0 0 3px var(--bg-white),
+    0 0 0 5px currentColor;
 }
 
 .timeline-content {
@@ -1357,7 +1359,7 @@ onUnmounted(() => {
 
 .evolution-image {
   max-width: 100%;
-  max-height: 24vh;
+  max-height: 55vh;
   object-fit: contain;
   border-radius: 8px;
   border: 1px solid var(--border-color);
@@ -1383,7 +1385,11 @@ onUnmounted(() => {
   justify-content: center;
   gap: var(--space-md);
   padding: var(--space-lg) var(--space-xl);
-  background: linear-gradient(135deg, var(--bg-blue-subtle) 0%, rgba(21, 115, 231, 0.02) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--bg-blue-subtle) 0%,
+    rgba(21, 115, 231, 0.02) 100%
+  );
   border: 1px solid var(--border-blue);
   border-radius: 12px;
   margin-top: var(--space-lg);
@@ -1448,7 +1454,11 @@ onUnmounted(() => {
 }
 
 .timeline-card-vertical.highlight {
-  background: linear-gradient(135deg, rgba(40, 190, 241, 0.1) 0%, rgba(21, 115, 231, 0.05) 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(40, 190, 241, 0.1) 0%,
+    rgba(21, 115, 231, 0.05) 100%
+  );
   border-color: var(--boyuan-blue-mid);
 }
 
@@ -1574,7 +1584,11 @@ onUnmounted(() => {
 }
 
 .feature-card.center {
-  background: linear-gradient(135deg, var(--bg-blue-subtle) 0%, var(--bg-white) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--bg-blue-subtle) 0%,
+    var(--bg-white) 100%
+  );
   border-color: var(--boyuan-blue-mid);
   transform: scale(1.05);
 }
@@ -1654,9 +1668,15 @@ onUnmounted(() => {
   letter-spacing: 0.5px;
 }
 
-.th-name { width: 25%; }
-.th-org { width: 20%; }
-.th-feature { width: 55%; }
+.th-name {
+  width: 25%;
+}
+.th-org {
+  width: 20%;
+}
+.th-feature {
+  width: 55%;
+}
 
 .models-table tbody tr {
   border-bottom: 1px solid var(--border-color);
@@ -1935,7 +1955,11 @@ onUnmounted(() => {
 
 .compare-note:nth-child(2) {
   border-left-color: var(--boyuan-blue-mid);
-  background: linear-gradient(90deg, rgba(21, 115, 231, 0.05) 0%, transparent 100%);
+  background: linear-gradient(
+    90deg,
+    rgba(21, 115, 231, 0.05) 0%,
+    transparent 100%
+  );
 }
 
 .compare-note:hover {
@@ -1972,7 +1996,11 @@ onUnmounted(() => {
 }
 
 .stage-card.highlight {
-  background: linear-gradient(135deg, rgba(21, 115, 231, 0.08) 0%, transparent 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(21, 115, 231, 0.08) 0%,
+    transparent 100%
+  );
   border-color: var(--boyuan-blue-mid);
   box-shadow: 0 4px 16px rgba(21, 115, 231, 0.1);
 }
@@ -2079,7 +2107,11 @@ onUnmounted(() => {
 }
 
 .stage-card.highlight {
-  background: linear-gradient(135deg, var(--bg-blue-subtle) 0%, var(--bg-white) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--bg-blue-subtle) 0%,
+    var(--bg-white) 100%
+  );
   border-color: var(--boyuan-blue-mid);
   box-shadow: 0 8px 24px rgba(21, 115, 231, 0.12);
 }
@@ -2402,9 +2434,15 @@ onUnmounted(() => {
   border-bottom: 2px solid var(--border-color);
 }
 
-.th-name { width: 25%; }
-.th-org { width: 20%; }
-.th-feature { width: 55%; }
+.th-name {
+  width: 25%;
+}
+.th-org {
+  width: 20%;
+}
+.th-feature {
+  width: 55%;
+}
 
 .models-table tbody tr {
   border-bottom: 1px solid var(--border-color);
@@ -2484,7 +2522,11 @@ onUnmounted(() => {
 
 .stage-card.highlight {
   border-color: var(--boyuan-blue-mid);
-  background: linear-gradient(135deg, var(--bg-blue-subtle) 0%, var(--bg-white) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--bg-blue-subtle) 0%,
+    var(--bg-white) 100%
+  );
   box-shadow: 0 8px 32px rgba(21, 115, 231, 0.15);
 }
 
@@ -2744,7 +2786,11 @@ onUnmounted(() => {
 }
 
 .vars-card {
-  background: linear-gradient(135deg, var(--bg-blue-subtle) 0%, var(--bg-white) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--bg-blue-subtle) 0%,
+    var(--bg-white) 100%
+  );
   border-color: var(--boyuan-blue-mid);
 }
 
