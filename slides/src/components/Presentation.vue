@@ -2,13 +2,11 @@
 import { ref, onMounted, onUnmounted, watch, nextTick, computed } from "vue";
 import gsap from "gsap";
 import Slide06ApiPayload from "./slides/Slide06ApiPayload.vue";
+import Slide09LegacyRefactor from "./slides/Slide09LegacyRefactor.vue";
 
 const currentSlide = ref(0);
-const totalSlides = ref(13);
+const totalSlides = ref(14);
 const isAnimating = ref(false);
-
-const tocItems = ref([]);
-const timelineCards = ref([]);
 
 const chapters = {
   0: "封面",
@@ -20,14 +18,15 @@ const chapters = {
   6: "第二部分",
   7: "OCR 架构与演进",
   8: "第三部分",
-  9: "简历筛选流程",
-  10: "边界防御",
-  11: "实战案例",
-  12: "结束",
+  9: "Legacy 界面重构演示",
+  10: "简历筛选流程",
+  11: "边界防御",
+  12: "实战案例",
+  13: "结束",
 };
 
 const showHeader = computed(
-  () => currentSlide.value >= 3 && currentSlide.value <= 11,
+  () => currentSlide.value >= 3 && currentSlide.value <= 12,
 );
 
 const tocItemsData = [
@@ -521,10 +520,18 @@ onUnmounted(() => {
         </div>
       </div>
 
-      <!-- Slide 10: 简历筛选流程 -->
+      <!-- Slide 10: Legacy 界面重构演示 -->
       <div
         class="slide slide-9 content-slide"
         :class="{ active: currentSlide === 9 }"
+      >
+        <Slide09LegacyRefactor :is-active="currentSlide === 9" />
+      </div>
+
+      <!-- Slide 11: 简历筛选流程 -->
+      <div
+        class="slide slide-10 content-slide"
+        :class="{ active: currentSlide === 10 }"
       >
         <div class="content-wrapper">
           <div class="workflow-image-container fade-in">
@@ -537,10 +544,10 @@ onUnmounted(() => {
         </div>
       </div>
 
-      <!-- Slide 11: Prompt 防御 -->
+      <!-- Slide 12: Prompt 防御 -->
       <div
-        class="slide slide-10 content-slide"
-        :class="{ active: currentSlide === 10 }"
+        class="slide slide-11 content-slide"
+        :class="{ active: currentSlide === 11 }"
       >
         <div class="content-wrapper">
           <div class="workflow-image-container fade-in">
@@ -549,10 +556,10 @@ onUnmounted(() => {
         </div>
       </div>
 
-      <!-- Slide 12: 实践案例 -->
+      <!-- Slide 13: 实践案例 -->
       <div
-        class="slide slide-11 content-slide"
-        :class="{ active: currentSlide === 11 }"
+        class="slide slide-12 content-slide"
+        :class="{ active: currentSlide === 12 }"
       >
         <div class="content-wrapper">
           <div class="workflow-demo slide-up">
@@ -589,10 +596,10 @@ onUnmounted(() => {
         </div>
       </div>
 
-      <!-- Slide 13: Ending -->
+      <!-- Slide 14: Ending -->
       <div
-        class="slide slide-12 ending-slide"
-        :class="{ active: currentSlide === 12 }"
+        class="slide slide-13 ending-slide"
+        :class="{ active: currentSlide === 13 }"
       >
         <img src="/images/cover-bg.png" class="ending-bg-img" alt="" />
         <div class="ending-content">

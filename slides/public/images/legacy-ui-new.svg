@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+  <defs>
+    <linearGradient id="modernHeader" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b82f6"/>
+      <stop offset="100%" style="stop-color:#2563eb"/>
+    </linearGradient>
+    <linearGradient id="modernGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#f8fafc"/>
+      <stop offset="100%" style="stop-color:#ffffff"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect x="0" y="0" width="800" height="450" fill="#f1f5f9"/>
+  
+  <!-- Main Window -->
+  <rect x="50" y="30" width="700" height="390" fill="#ffffff" rx="12" stroke="#e2e8f0" stroke-width="1"/>
+  <rect x="50" y="30" width="700" height="390" fill="none" stroke="#3b82f6" stroke-width="2" rx="12" opacity="0.3"/>
+  
+  <!-- Window Header -->
+  <rect x="50" y="30" width="700" height="48" fill="url(#modernHeader)" rx="12"/>
+  <rect x="0" y="78" width="800" height="150" fill="url(#modernGrad)"/>
+  <text x="70" y="60" font-family="Arial" font-size="14" font-weight="600" fill="#ffffff">现代管理系统 v3.0</text>
+  
+  <!-- Window Controls -->
+  <circle cx="710" cy="54" r="5" fill="#fca5a5"/>
+  <circle cx="725" cy="54" r="5" fill="#fcd34d"/>
+  <circle cx="740" cy="54" r="5" fill="#86efac"/>
+  
+  <!-- Tab Navigation -->
+  <rect x="70" y="92" width="100" height="36" fill="#ffffff" rx="8"/>
+  <text x="120" y="115" font-family="Arial" font-size="13" font-weight="500" text-anchor="middle" fill="#3b82f6">数据视图</text>
+  
+  <rect x="180" y="92" width="100" height="36" fill="transparent" rx="8"/>
+  <text x="230" y="115" font-family="Arial" font-size="13" font-weight="400" text-anchor="middle" fill="#64748b">详细信息</text>
+  
+  <rect x="290" y="92" width="100" height="36" fill="transparent" rx="8"/>
+  <text x="340" y="115" font-family="Arial" font-size="13" font-weight="400" text-anchor="middle" fill="#64748b">系统设置</text>
+  
+  <!-- Search Section -->
+  <rect x="70" y="148" width="300" height="40" fill="#f8fafc" rx="8" stroke="#e2e8f0"/>
+  <text x="90" y="173" font-family="Arial" font-size="13" fill="#94a3b8">搜索项目名称...</text>
+  <circle cx="350" cy="168" r="3" fill="#3b82f6"/>
+  <circle cx="358" cy="168" r="3" fill="#3b82f6"/>
+  <circle cx="366" cy="168" r="3" fill="#3b82f6"/>
+  
+  <rect x="400" y="148" width="100" height="40" fill="#3b82f6" rx="8"/>
+  <text x="450" y="174" font-family="Arial" font-size="13" font-weight="500" text-anchor="middle" fill="#ffffff">搜索</text>
+  
+  <!-- Data Table Header -->
+  <rect x="70" y="210" width="660" height="44" fill="#f8fafc" rx="8"/>
+  <text x="150" y="238" font-family="Arial" font-size="12" font-weight="600" fill="#1e293b">项目名称</text>
+  <text x="320" y="238" font-family="Arial" font-size="12" font-weight="600" fill="#1e293b">状态</text>
+  <text x="470" y="238" font-family="Arial" font-size="12" font-weight="600" fill="#1e293b">进度</text>
+  <text x="620" y="238" font-family="Arial" font-size="12" font-weight="600" fill="#1e293b">操作</text>
+  
+  <!-- Table Row 1 -->
+  <rect x="70" y="254" width="660" height="50" fill="#ffffff" rx="4"/>
+  <text x="150" y="283" font-family="Arial" font-size="13" font-weight="500" fill="#1e293b">项目 Alpha</text>
+  <rect x="270" y="264" width="70" height="24" fill="#dbeafe" rx="12"/>
+  <text x="305" y="281" font-family="Arial" font-size="11" font-weight="500" text-anchor="middle" fill="#1e40af">进行中</text>
+  <rect x="420" y="274" width="100" height="6" fill="#e2e8f0" rx="3"/>
+  <rect x="420" y="274" width="75" height="6" fill="#3b82f6" rx="3"/>
+  <text x="535" y="283" font-family="Arial" font-size="11" fill="#64748b">75%</text>
+  <text x="600" y="283" font-family="Arial" font-size="12" fill="#3b82f6" text-anchor="middle">编辑</text>
+  <text x="650" y="283" font-family="Arial" font-size="12" fill="#ef4444" text-anchor="middle">删除</text>
+  
+  <!-- Table Row 2 -->
+  <rect x="70" y="304" width="660" height="50" fill="#f8fafc" rx="4"/>
+  <text x="150" y="333" font-family="Arial" font-size="13" font-weight="500" fill="#1e293b">项目 Beta</text>
+  <rect x="270" y="314" width="70" height="24" fill="#d1fae5" rx="12"/>
+  <text x="305" y="331" font-family="Arial" font-size="11" font-weight="500" text-anchor="middle" fill="#065f46">已完成</text>
+  <rect x="420" y="324" width="100" height="6" fill="#e2e8f0" rx="3"/>
+  <rect x="420" y="324" width="100" height="6" fill="#10b981" rx="3"/>
+  <text x="535" y="333" font-family="Arial" font-size="11" fill="#64748b">100%</text>
+  <text x="600" y="333" font-family="Arial" font-size="12" fill="#3b82f6" text-anchor="middle">编辑</text>
+  <text x="650" y="333" font-family="Arial" font-size="12" fill="#ef4444" text-anchor="middle">删除</text>
+  
+  <!-- Table Row 3 -->
+  <rect x="70" y="354" width="660" height="50" fill="#ffffff" rx="4"/>
+  <text x="150" y="383" font-family="Arial" font-size="13" font-weight="500" fill="#1e293b">项目 Gamma</text>
+  <rect x="270" y="364" width="70" height="24" fill="#fef3c7" rx="12"/>
+  <text x="305" y="381" font-family="Arial" font-size="11" font-weight="500" text-anchor="middle" fill="#92400e">规划中</text>
+  <rect x="420" y="374" width="100" height="6" fill="#e2e8f0" rx="3"/>
+  <rect x="420" y="374" width="20" height="6" fill="#f59e0b" rx="3"/>
+  <text x="535" y="383" font-family="Arial" font-size="11" fill="#64748b">20%</text>
+  <text x="600" y="383" font-family="Arial" font-size="12" fill="#3b82f6" text-anchor="middle">编辑</text>
+  <text x="650" y="383" font-family="Arial" font-size="12" fill="#ef4444" text-anchor="middle">删除</text>
+  
+  <!-- Label -->
+  <text x="400" y="430" font-family="Arial" font-size="14" text-anchor="middle" fill="#1e40af" font-weight="bold">
+    重构后 - 现代 Vue 3 界面
+  </text>
+</svg>
