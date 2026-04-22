@@ -361,8 +361,10 @@ onUnmounted(() => {
         :class="{ active: currentSlide === 3 }"
       >
         <div class="content-wrapper">
-          <h2 class="slide-intro-title fade-in">从纯文本到全模态：AI "感知系统"的代际跃迁</h2>
-          
+          <h2 class="slide-intro-title fade-in">
+            从纯文本到全模态：AI "感知系统"的代际跃迁
+          </h2>
+
           <div class="omni-evolution-layout">
             <div class="evolution-left slide-left">
               <div class="arch-compare-cards">
@@ -553,7 +555,11 @@ onUnmounted(() => {
       >
         <div class="content-wrapper">
           <div class="workflow-image-container fade-in">
-            <img src="/images/prompt_defense.png" alt="Prompt Injection 边界防御" class="workflow-image" />
+            <img
+              src="/images/prompt_defense.png"
+              alt="Prompt Injection 边界防御"
+              class="workflow-image"
+            />
           </div>
         </div>
       </div>
@@ -564,35 +570,59 @@ onUnmounted(() => {
         :class="{ active: currentSlide === 12 }"
       >
         <div class="content-wrapper">
-          <div class="workflow-demo slide-up">
-            <div class="workflow-input">
-              <div class="input-card">
-                <span class="input-icon">📷</span>
-                <span class="input-label">输入图片</span>
-              </div>
-              <div class="input-arrow">→</div>
-              <div class="input-card vars-card">
-                <span class="input-icon">📝</span>
-                <span class="input-label">动态变量</span>
-                <code class="inline-vars">{doc_type, name, ...}</code>
+          <div class="practice-layout">
+            <div class="practice-left fade-in">
+              <h2 class="practice-title">多模态附件输入 · 实践案例</h2>
+
+              <div class="practice-points">
+                <div class="practice-point">
+                  <div class="point-icon">📎</div>
+                  <div class="point-content">
+                    <h3>附件上传新范式</h3>
+                    <p>
+                      支持图片、PDF、Word、Excel 等多格式混传，AI
+                      自动识别内容类型并提取关键信息
+                    </p>
+                  </div>
+                </div>
+
+                <div class="practice-point">
+                  <div class="point-icon">🧩</div>
+                  <div class="point-content">
+                    <h3>动态变量注入</h3>
+                    <p>
+                      通过 AST
+                      解析提示词模板，自动注入用户偏好配置，实现千人千面的 AI
+                      响应
+                    </p>
+                  </div>
+                </div>
+
+                <div class="practice-point">
+                  <div class="point-icon">⚡</div>
+                  <div class="point-content">
+                    <h3>实时反馈管道</h3>
+                    <p>
+                      交错序列协议确保多模态输入同步处理，用户等待时间降低 70%
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
-            <div class="workflow-process">
-              <span class="process-arrow">⟶</span>
-              <span class="process-label">OCR 提取 + 模板注入 + LLM 推理</span>
-            </div>
-            <div class="workflow-output">
-              <div class="output-card">
-                <span class="output-icon">📋</span>
-                <span class="output-label">结构化输出</span>
-                <pre class="output-json">
-{
-  "商户": "星巴克",
-  "日期": "2026-04-17",
-  "金额": "58.00"
-}</pre
-                >
+
+            <div class="practice-right slide-up">
+              <div class="qr-placeholder">
+                <div class="qr-frame">
+                  <div class="qr-corner top-left"></div>
+                  <div class="qr-corner top-right"></div>
+                  <div class="qr-corner bottom-left"></div>
+                  <div class="qr-corner bottom-right"></div>
+                </div>
+                <div class="qr-content">
+                  <span class="qr-label">扫码</span>
+                </div>
               </div>
+              <p class="qr-hint">二维码</p>
             </div>
           </div>
         </div>
@@ -718,7 +748,8 @@ onUnmounted(() => {
   --font-bold: 700;
 
   /* Font Families */
-  --font-main: "Noto Sans SC", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-main:
+    "Noto Sans SC", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-mono: "JetBrains Mono", "Consolas", "Monaco", monospace;
 
   /* Letter Spacing */
@@ -2962,9 +2993,202 @@ html {
 
 .practice-layout {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: var(--space-3xl);
+  align-items: center;
+  height: 100%;
+}
+
+.practice-left {
+  padding-right: var(--space-xl);
+}
+
+.practice-title {
+  font-size: clamp(1.5rem, 2vw, 1.875rem);
+  font-weight: var(--font-bold);
+  color: var(--text-primary);
+  margin-bottom: var(--space-2xl);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+}
+
+.practice-points {
+  display: flex;
+  flex-direction: column;
   gap: var(--space-xl);
-  margin-bottom: var(--space-lg);
+}
+
+.practice-point {
+  display: flex;
+  gap: var(--space-lg);
+  padding: var(--space-lg);
+  background: var(--bg-white);
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  transition: all 0.3s;
+}
+
+.practice-point:hover {
+  border-color: var(--boyuan-blue-mid);
+  box-shadow: 0 8px 24px rgba(21, 115, 231, 0.08);
+  transform: translateX(8px);
+}
+
+.point-icon {
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-blue-subtle);
+  border: 1px solid var(--border-blue);
+  border-radius: 12px;
+  font-size: 28px;
+}
+
+.point-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.point-content h3 {
+  font-size: var(--text-lg);
+  font-weight: var(--font-semibold);
+  color: var(--text-primary);
+  margin-bottom: var(--space-xs);
+  line-height: var(--leading-snug);
+}
+
+.point-content p {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  line-height: var(--leading-relaxed);
+}
+
+/* QR Code Placeholder */
+.practice-right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-lg);
+}
+
+.qr-placeholder {
+  position: relative;
+  width: 280px;
+  height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    135deg,
+    var(--bg-blue-subtle) 0%,
+    rgba(21, 115, 231, 0.02) 100%
+  );
+  border: 2px dashed var(--border-blue);
+  border-radius: 24px;
+  transition: all 0.3s;
+}
+
+.qr-placeholder:hover {
+  border-style: solid;
+  border-color: var(--boyuan-blue-mid);
+  box-shadow: 0 12px 40px rgba(21, 115, 231, 0.15);
+  transform: translateY(-4px);
+}
+
+.qr-frame {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.qr-corner {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  border: 3px solid var(--boyuan-blue-mid);
+  transition: all 0.3s;
+}
+
+.qr-corner.top-left {
+  top: -2px;
+  left: -2px;
+  border-right: none;
+  border-bottom: none;
+  border-radius: 20px 0 0 0;
+}
+
+.qr-corner.top-right {
+  top: -2px;
+  right: -2px;
+  border-left: none;
+  border-bottom: none;
+  border-radius: 0 20px 0 0;
+}
+
+.qr-corner.bottom-left {
+  bottom: -2px;
+  left: -2px;
+  border-right: none;
+  border-top: none;
+  border-radius: 0 0 0 20px;
+}
+
+.qr-corner.bottom-right {
+  bottom: -2px;
+  right: -2px;
+  border-left: none;
+  border-top: none;
+  border-radius: 0 0 20px 0;
+}
+
+.qr-placeholder:hover .qr-corner {
+  width: 40px;
+  height: 40px;
+  border-width: 4px;
+}
+
+.qr-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.qr-icon {
+  font-size: 64px;
+  opacity: 0.8;
+  filter: grayscale(0.3);
+  transition: all 0.3s;
+}
+
+.qr-placeholder:hover .qr-icon {
+  opacity: 1;
+  filter: grayscale(0);
+  transform: scale(1.1);
+}
+
+.qr-label {
+  font-size: var(--text-lg);
+  font-weight: var(--font-semibold);
+  color: var(--boyuan-blue-mid);
+  letter-spacing: var(--tracking-wide);
+}
+
+.qr-desc {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  font-weight: var(--font-medium);
+}
+
+.qr-hint {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  text-align: center;
+  line-height: var(--leading-relaxed);
 }
 
 .flow-diagram {
