@@ -1,9 +1,10 @@
 <script setup>
 import { ref, onMounted, onUnmounted, watch, nextTick, computed } from "vue";
 import gsap from "gsap";
+import Slide06ApiPayload from "./slides/Slide06ApiPayload.vue";
 
 const currentSlide = ref(0);
-const totalSlides = 12;
+const totalSlides = ref(13);
 const isAnimating = ref(false);
 
 const tocItems = ref([]);
@@ -15,17 +16,18 @@ const chapters = {
   2: "第一部分",
   3: "AI 输入变革",
   4: "全模态架构对比",
-  5: "第二部分",
-  6: "OCR 架构与演进",
-  7: "第三部分",
-  8: "动态变量应用",
-  9: "注入方式",
-  10: "实战案例",
-  11: "结束",
+  5: "API 调用变革",
+  6: "第二部分",
+  7: "OCR 架构与演进",
+  8: "第三部分",
+  9: "简历筛选流程",
+  10: "边界防御",
+  11: "实战案例",
+  12: "结束",
 };
 
 const showHeader = computed(
-  () => currentSlide.value >= 3 && currentSlide.value <= 10,
+  () => currentSlide.value >= 3 && currentSlide.value <= 11,
 );
 
 const tocItemsData = [
@@ -46,16 +48,18 @@ const tocItemsData = [
   },
 ];
 
-const timelineCardsData = [
-  { year: "2023", title: "纯文本", desc: "Text Prompt", color: "#6B7280" },
-  { year: "2024", title: "多模态", desc: "Text + Image", color: "#1573e7" },
-  { year: "2025", title: "扩展模态", desc: "+ Audio/Video", color: "#0c4ce2" },
+const archCompareData = [
   {
-    year: "2026",
-    title: "原生全模态",
-    desc: "Omni-Native",
-    color: "#28bef1",
-    highlight: true,
+    type: "old",
+    title: "旧时代架构",
+    flow: "附件 → 文件解析器/提取器 → 纯文本 → LLM",
+    issue: "信息损耗严重，丢失排版、颜色、空间关系",
+  },
+  {
+    type: "new",
+    title: "新一代架构 - 全模态模型",
+    flow: "图像 Patch、音频帧与文本 Token 在底层 Transformer 中被映射到同一高维隐空间 (Latent Space)",
+    issue: "",
   },
 ];
 
@@ -122,65 +126,20 @@ const modelsData = [
 
 const ocrStagesData = [
   {
-    title: "外置OCR管道",
-    steps: ["OCR工具", "提取文字", "纯文本模型"],
-    desc: "Tesseract / PaddleOCR扫描图片 → 喂给LLM做阅读理解",
+    title: "外置 OCR 管道",
+    steps: ["OCR 工具", "提取文字", "纯文本模型"],
+    desc: "Tesseract / PaddleOCR 扫描图片 → 喂给 LLM 做阅读理解",
   },
   {
     title: "原生三部走",
     steps: ["视觉编码器 ViT", "映射层 Projector", "大语言模型 LLM"],
-    desc: "视觉Token → 翻译到词嵌入空间 → LLM理解推理",
+    desc: "视觉 Token → 翻译到词嵌入空间 → LLM 理解推理",
   },
   {
     title: "原生融合",
-    steps: ["路线一：离散Token化", "路线二：端到端原生"],
-    desc: '统一"离散Token"序列 或 重构底层注意力机制',
+    steps: ["路线一：离散 Token 化", "路线二：端到端原生"],
+    desc: '统一"离散 Token"序列 或 重构底层注意力机制',
     highlight: true,
-  },
-];
-
-const dynamicVarExamples = [
-  {
-    scene: "简历筛选 Agent",
-    vars: ["job_title", "required_skills", "experience_years"],
-    template: "请根据{{job_title}}岗位要求，评估候选人是否匹配",
-    output: "匹配度评分 + 关键技能对比",
-  },
-  {
-    scene: "合同审查助手",
-    vars: ["contract_type", "party_a", "party_b", "amount"],
-    template: "审查{{contract_type}}中{{party_a}}与{{party_b}}的条款风险",
-    output: "风险点列表 + 修改建议",
-  },
-  {
-    scene: "财报分析机器人",
-    vars: ["company_name", "fiscal_year", "metrics"],
-    template: "分析{{company_name}}{{fiscal_year}}年的{{metrics}}指标",
-    output: "趋势分析 + 同业对比",
-  },
-  {
-    scene: "医疗报告解读",
-    vars: ["patient_age", "test_type", "test_values"],
-    template: "{{patient_age}}岁患者的{{test_type}}结果：{{test_values}}",
-    output: "异常指标标注 + 临床建议",
-  },
-];
-
-const varInjectionMethods = [
-  {
-    method: "模板语法",
-    code: "{{variable_name}}",
-    desc: "简单直接，适合非技术人员配置",
-  },
-  {
-    method: "JSON 注入",
-    code: '{"key": "value"}',
-    desc: "结构化强，适合程序化处理",
-  },
-  {
-    method: "SQL 参数化",
-    code: ":param_name",
-    desc: "防注入攻击，适合数据库查询",
   },
 ];
 
@@ -301,7 +260,7 @@ onUnmounted(() => {
 <template>
   <div class="presentation">
     <!-- Blue Geometric Background for Cover/Ending -->
-    <div class="geo-bg" v-if="currentSlide === 0 || currentSlide === 13">
+    <div class="geo-bg" v-if="currentSlide === 0 || currentSlide === 12">
       <img src="/images/cover-bg.png" class="cover-bg-img" alt="" />
     </div>
 
@@ -403,29 +362,20 @@ onUnmounted(() => {
         :class="{ active: currentSlide === 3 }"
       >
         <div class="content-wrapper">
-          <h2 class="section-title fade-in">全模态模型演进</h2>
           <div class="omni-evolution-layout">
             <div class="evolution-left slide-left">
-              <div class="timeline-vertical">
+              <div class="arch-compare-cards">
                 <div
-                  class="timeline-item"
-                  v-for="(card, idx) in timelineCardsData"
+                  class="arch-card"
+                  v-for="(card, idx) in archCompareData"
                   :key="idx"
-                  :class="{ highlight: card.highlight }"
+                  :class="card.type"
                 >
-                  <div
-                    class="timeline-marker"
-                    :style="{ background: card.color }"
-                  ></div>
-                  <div class="timeline-content">
-                    <span
-                      class="timeline-year"
-                      :style="{ color: card.color }"
-                      >{{ card.year }}</span
-                    >
-                    <span class="timeline-title">{{ card.title }}</span>
-                    <span class="timeline-desc">{{ card.desc }}</span>
-                  </div>
+                  <h3 class="arch-card-title">{{ card.title }}</h3>
+                  <p class="arch-card-flow">{{ card.flow }}</p>
+                  <p v-if="card.issue" class="arch-card-issue">
+                    {{ card.issue }}
+                  </p>
                 </div>
               </div>
             </div>
@@ -451,7 +401,6 @@ onUnmounted(() => {
         :class="{ active: currentSlide === 4 }"
       >
         <div class="content-wrapper">
-          <h2 class="section-title fade-in">全模态架构对比</h2>
           <div class="omni-arch-compare fade-in">
             <img
               src="/images/traditional_vs_omni.png"
@@ -462,10 +411,18 @@ onUnmounted(() => {
         </div>
       </div>
 
-      <!-- Slide 6: Part 2 Cover -->
+      <!-- Slide 6: API Payload -->
       <div
-        class="slide slide-5 part-cover"
+        class="slide slide-5 content-slide"
         :class="{ active: currentSlide === 5 }"
+      >
+        <Slide06ApiPayload :is-active="currentSlide === 5" />
+      </div>
+
+      <!-- Slide 7: Part 2 Cover -->
+      <div
+        class="slide slide-6 part-cover"
+        :class="{ active: currentSlide === 6 }"
       >
         <div class="part-decoration-left">
           <img src="/images/logo-icon.png" alt="" class="part-logo-img" />
@@ -489,13 +446,12 @@ onUnmounted(() => {
         </div>
       </div>
 
-      <!-- Slide 7: OCR 架构对比 + 三代演进（左右结构） -->
+      <!-- Slide 8: OCR 架构对比 + 三代演进（左右结构） -->
       <div
-        class="slide slide-6 content-slide"
-        :class="{ active: currentSlide === 6 }"
+        class="slide slide-7 content-slide"
+        :class="{ active: currentSlide === 7 }"
       >
         <div class="content-wrapper">
-          <h2 class="section-title fade-in">OCR 技术：从外置到原生融合</h2>
           <div class="ocr-split-layout">
             <div class="ocr-left fade-in">
               <h3 class="ocr-subtitle">架构对比</h3>
@@ -505,16 +461,6 @@ onUnmounted(() => {
                   alt="OCR 架构对比"
                   class="ocr-arch-img"
                 />
-              </div>
-              <div class="arch-compare-notes">
-                <div
-                  class="compare-note"
-                  v-for="note in archNotesData"
-                  :key="note.label"
-                >
-                  <span class="note-label">{{ note.label }}</span>
-                  <span class="note-text">{{ note.text }}</span>
-                </div>
               </div>
             </div>
             <div class="ocr-right slide-up">
@@ -546,10 +492,10 @@ onUnmounted(() => {
         </div>
       </div>
 
-      <!-- Slide 8: Part 3 Cover -->
+      <!-- Slide 9: Part 3 Cover -->
       <div
-        class="slide slide-7 part-cover"
-        :class="{ active: currentSlide === 7 }"
+        class="slide slide-8 part-cover"
+        :class="{ active: currentSlide === 8 }"
       >
         <div class="part-decoration-left">
           <img src="/images/logo-icon.png" alt="" class="part-logo-img" />
@@ -575,65 +521,40 @@ onUnmounted(() => {
         </div>
       </div>
 
-      <!-- Slide 9: 应用场景 -->
-      <div
-        class="slide slide-8 content-slide"
-        :class="{ active: currentSlide === 8 }"
-      >
-        <div class="content-wrapper">
-          <h2 class="section-title fade-in">动态变量的真实应用场景</h2>
-          <div class="scenes-grid">
-            <div
-              class="scene-card scale-in"
-              v-for="(scene, idx) in dynamicVarExamples"
-              :key="idx"
-            >
-              <h3 class="scene-title">{{ scene.scene }}</h3>
-              <div class="scene-vars">
-                <span class="vars-label">变量：</span>
-                <code class="var-list">{{ scene.vars.join(", ") }}</code>
-              </div>
-              <div class="scene-template">
-                <span class="template-label">模板：</span>
-                <pre class="template-text">{{ scene.template }}</pre>
-              </div>
-              <div class="scene-output">
-                <span class="output-label">输出：</span>
-                <span class="output-text">{{ scene.output }}</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Slide 10: 注入方式 -->
+      <!-- Slide 10: 简历筛选流程 -->
       <div
         class="slide slide-9 content-slide"
         :class="{ active: currentSlide === 9 }"
       >
         <div class="content-wrapper">
-          <h2 class="section-title fade-in">变量注入的三种方式</h2>
-          <div class="injection-methods">
-            <div
-              class="method-card slide-up"
-              v-for="(method, idx) in varInjectionMethods"
-              :key="idx"
-            >
-              <h3 class="method-title">{{ method.method }}</h3>
-              <pre class="method-code">{{ method.code }}</pre>
-              <p class="method-desc">{{ method.desc }}</p>
-            </div>
+          <div class="workflow-image-container fade-in">
+            <img
+              src="/images/resume_screening_workflow.png"
+              alt="简历筛选工作流程"
+              class="workflow-image"
+            />
           </div>
         </div>
       </div>
 
-      <!-- Slide 11: 实践案例 -->
+      <!-- Slide 11: Prompt 防御 -->
       <div
         class="slide slide-10 content-slide"
         :class="{ active: currentSlide === 10 }"
       >
         <div class="content-wrapper">
-          <h2 class="section-title fade-in">实战：文档智能处理</h2>
+          <div class="workflow-image-container fade-in">
+            <img src="/images/prompt_defense.png" alt="Prompt Injection 边界防御" class="workflow-image" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 12: 实践案例 -->
+      <div
+        class="slide slide-11 content-slide"
+        :class="{ active: currentSlide === 11 }"
+      >
+        <div class="content-wrapper">
           <div class="workflow-demo slide-up">
             <div class="workflow-input">
               <div class="input-card">
@@ -668,10 +589,10 @@ onUnmounted(() => {
         </div>
       </div>
 
-      <!-- Slide 12: Ending -->
+      <!-- Slide 13: Ending -->
       <div
-        class="slide slide-11 ending-slide"
-        :class="{ active: currentSlide === 11 }"
+        class="slide slide-12 ending-slide"
+        :class="{ active: currentSlide === 12 }"
       >
         <img src="/images/cover-bg.png" class="ending-bg-img" alt="" />
         <div class="ending-content">
@@ -1269,74 +1190,72 @@ onUnmounted(() => {
   padding: var(--space-lg);
 }
 
-.timeline-vertical {
+.arch-compare-cards {
   display: flex;
   flex-direction: column;
   gap: var(--space-lg);
-  position: relative;
 }
 
-.timeline-item {
-  display: flex;
-  align-items: flex-start;
-  gap: var(--space-md);
-  padding: var(--space-md) var(--space-lg);
+.arch-card {
+  padding: var(--space-xl);
   background: var(--bg-white);
   border: 1px solid var(--border-color);
   border-radius: 12px;
   transition: all 0.3s;
-  position: relative;
-  z-index: 1;
 }
 
-.timeline-item:hover {
-  transform: translateX(var(--space-md));
-  box-shadow: 0 8px 24px rgba(21, 115, 231, 0.1);
-  border-color: var(--border-blue);
-}
-
-.timeline-item.highlight {
+.arch-card.old {
   background: linear-gradient(
     135deg,
-    var(--bg-blue-subtle) 0%,
+    rgba(107, 114, 128, 0.05) 0%,
     var(--bg-white) 100%
   );
-  border-color: var(--boyuan-blue-mid);
-  box-shadow: 0 8px 24px rgba(21, 115, 231, 0.15);
+  border-left: 4px solid #6b7280;
 }
 
-.timeline-marker {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  flex-shrink: 0;
-  margin-top: 6px;
-  box-shadow:
-    0 0 0 3px var(--bg-white),
-    0 0 0 5px currentColor;
+.arch-card.new {
+  background: linear-gradient(
+    135deg,
+    rgba(21, 115, 231, 0.08) 0%,
+    var(--bg-white) 100%
+  );
+  border-left: 4px solid var(--boyuan-blue-mid);
 }
 
-.timeline-content {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+.arch-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(21, 115, 231, 0.12);
 }
 
-.timeline-year {
-  font-size: var(--text-xl);
-  font-weight: 800;
-  line-height: 1;
-}
-
-.timeline-title {
-  font-size: var(--text-base);
-  font-weight: 600;
+.arch-card-title {
+  font-size: var(--text-lg);
+  font-weight: 700;
   color: var(--text-primary);
+  margin-bottom: var(--space-md);
 }
 
-.timeline-desc {
+.arch-card.new .arch-card-title {
+  color: var(--boyuan-blue-mid);
+}
+
+.arch-card-flow {
   font-size: var(--text-sm);
   color: var(--text-secondary);
+  line-height: 1.6;
+  font-family: var(--font-mono);
+  background: var(--bg-gray);
+  padding: var(--space-md);
+  border-radius: 6px;
+  margin-bottom: var(--space-md);
+}
+
+.arch-card-issue {
+  font-size: var(--text-sm);
+  color: #dc2626;
+  font-weight: 500;
+  padding: var(--space-sm) var(--space-md);
+  background: rgba(220, 38, 38, 0.08);
+  border-radius: 6px;
 }
 
 .evolution-right {
@@ -2169,99 +2088,22 @@ onUnmounted(() => {
   line-height: 1.6;
 }
 
-/* Dynamic Variable Scenes (Slide 11) */
-.scenes-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-xl);
-}
-
-.scene-card {
-  padding: var(--space-xl);
-  background: var(--bg-white);
-  border: 1px solid var(--border-color);
-  border-radius: 12px;
-  transition: all 0.3s;
-}
-
-.scene-card:hover {
-  border-color: var(--boyuan-blue-mid);
-  box-shadow: 0 8px 24px rgba(21, 115, 231, 0.1);
-  transform: translateY(-4px);
-}
-
-.scene-title {
-  font-size: var(--text-lg);
-  font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: var(--space-md);
-}
-
-.scene-vars {
-  margin-bottom: var(--space-md);
-}
-
-.vars-label {
-  font-size: var(--text-xs);
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  display: block;
-  margin-bottom: var(--space-xs);
-}
-
-.var-list {
-  font-family: var(--font-mono);
-  font-size: var(--text-sm);
-  color: var(--boyuan-blue-mid);
-  background: var(--bg-light);
-  padding: var(--space-xs) var(--space-sm);
-  border-radius: 4px;
-}
-
-.scene-template {
-  margin-bottom: var(--space-md);
-}
-
-.template-label {
-  font-size: var(--text-xs);
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  display: block;
-  margin-bottom: var(--space-xs);
-}
-
-.template-text {
-  font-family: var(--font-mono);
-  font-size: var(--text-sm);
-  color: var(--text-secondary);
-  background: var(--bg-light);
+/* Dynamic Variable Scenes (Slide 10) */
+.workflow-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: var(--space-sm);
-  border-radius: 6px;
-  white-space: pre-wrap;
-  line-height: 1.6;
-  border: 1px dashed var(--border-color);
 }
 
-.scene-output {
-  padding-top: var(--space-md);
-  border-top: 1px dashed var(--border-color);
-}
-
-.output-label {
-  font-size: var(--text-xs);
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  display: block;
-  margin-bottom: var(--space-xs);
-}
-
-.output-text {
-  font-size: var(--text-sm);
-  color: var(--text-primary);
-  font-weight: 500;
+.workflow-image {
+  max-width: 90%;
+  max-height: 65vh;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  border: 1px solid var(--border-color);
+  background: var(--bg-white);
 }
 
 /* Injection Methods (Slide 12) */
