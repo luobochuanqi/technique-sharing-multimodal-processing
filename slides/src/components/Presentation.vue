@@ -307,7 +307,7 @@ onUnmounted(() => {
         </div>
         <div class="toc-right">
           <div class="toc-header">
-            <h2 class="toc-section-title">第2节：多模态输入处理</h2>
+            <h2 class="toc-section-title">多模态输入处理</h2>
             <span class="toc-label">CONTENTS</span>
           </div>
           <div class="toc-list">
