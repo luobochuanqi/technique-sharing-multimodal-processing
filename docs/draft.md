@@ -18,9 +18,9 @@
 #### 几个例子
 
 - 与全模态效果类似，但实现方式并不一致。豆包是通过调度算法等工程手段实现的。
-  ![全模态对比](<../assets/images/traditional_vs_omni .png>)
+  ![全模态对比](../assets/images/traditional_vs_omni.png)
 - 挑选了一个我很久之前就在期望的场景，给出指令后，AI 可以直接给出图文并茂的结果
-  ![图文并茂](<../assets/images/with_both_pictures_and text.webp>)
+  ![图文并茂](../assets/images/illustrated.webp)
 
 ### 核心概念：原生全模态 (Native Omni-Modal)
 

@@ -13,9 +13,15 @@ import Presentation from './components/Presentation.vue'
   box-sizing: border-box;
 }
 
-html, body, #app {
-  width: 100%;
-  height: 100%;
+html, body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+#app {
+  width: 100vw;
+  height: 100vh;
   overflow: hidden;
 }
 </style>
