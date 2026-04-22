@@ -17,9 +17,9 @@ const chapters = {
   5: "API 调用变革",
   6: "第二部分",
   7: "OCR 架构与演进",
-  8: "简历筛选流程",
-  9: "Legacy 界面重构演示",
-  10: "第三部分",
+  8: "Legacy 界面重构演示",
+  9: "第三部分",
+  10: "简历筛选流程",
   11: "边界防御",
   12: "实战案例",
   13: "结束",
@@ -493,34 +493,18 @@ onUnmounted(() => {
         </div>
       </div>
 
-      <!-- Slide 9: 简历筛选流程 -->
+      <!-- Slide 9: Legacy 界面重构演示 -->
       <div
         class="slide slide-8 content-slide"
         :class="{ active: currentSlide === 8 }"
       >
-        <div class="content-wrapper">
-          <div class="workflow-image-container fade-in">
-            <img
-              src="/images/resume_screening_workflow.png"
-              alt="简历筛选工作流程"
-              class="workflow-image"
-            />
-          </div>
-        </div>
+        <Slide09LegacyRefactor :is-active="currentSlide === 8" />
       </div>
 
-      <!-- Slide 10: Legacy 界面重构演示 -->
+      <!-- Slide 10: Part 3 Cover -->
       <div
-        class="slide slide-9 content-slide"
+        class="slide slide-9 part-cover"
         :class="{ active: currentSlide === 9 }"
-      >
-        <Slide09LegacyRefactor :is-active="currentSlide === 9" />
-      </div>
-
-      <!-- Slide 11: Part 3 Cover -->
-      <div
-        class="slide slide-10 part-cover"
-        :class="{ active: currentSlide === 10 }"
       >
         <div class="part-decoration-left">
           <img src="/images/logo-icon.png" alt="" class="part-logo-img" />
@@ -543,6 +527,22 @@ onUnmounted(() => {
             alt=""
             class="deco-triangle-small-img"
           />
+        </div>
+      </div>
+
+      <!-- Slide 11: 简历筛选流程 (Part 3 第一张) -->
+      <div
+        class="slide slide-10 content-slide"
+        :class="{ active: currentSlide === 10 }"
+      >
+        <div class="content-wrapper">
+          <div class="workflow-image-container fade-in">
+            <img
+              src="/images/resume_screening_workflow.png"
+              alt="简历筛选工作流程"
+              class="workflow-image"
+            />
+          </div>
         </div>
       </div>
 
