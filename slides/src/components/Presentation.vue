@@ -11,17 +11,17 @@ const isAnimating = ref(false);
 const chapters = {
   0: "封面",
   1: "目录",
-  2: "第一部分",
-  3: "AI 输入变革",
-  4: "全模态架构对比",
-  5: "API 调用变革",
-  6: "第二部分",
-  7: "OCR 架构与演进",
-  8: "Legacy 界面重构演示",
-  9: "第三部分",
-  10: "简历筛选流程",
-  11: "边界防御",
-  12: "实战案例",
+  2: "模块一",
+  3: "告别附件拼接",
+  4: "级联式 vs 端到端",
+  5: "Token 序列统一编码",
+  6: "模块二",
+  7: "杀死传统 OCR",
+  8: "VLM 降维打击",
+  9: "模块三",
+  10: "从提示词到上下文工程",
+  11: "动态变量系统级注入",
+  12: "工程价值总结",
   13: "结束",
 };
 
@@ -32,32 +32,32 @@ const showHeader = computed(
 const tocItemsData = [
   {
     num: "01",
-    title: '从纯文本到全模态：AI"感知系统"的代际跃迁',
-    desc: "Omni 模型概述",
+    title: '告别"附件"拼接——原生全模态的架构跃迁',
+    desc: "统一特征空间，Token 序列编码",
   },
   {
     num: "02",
-    title: 'OCR 3.0：从"看见字符"到"理解文档"',
-    desc: "外置OCR → 原生融合",
+    title: '杀死传统 OCR——空间与语义的融合理解',
+    desc: "VLM 降维打击，OCR 共生模式",
   },
   {
     num: "03",
-    title: '动态变量：从固定提示词到"上下文工程"',
-    desc: "模板与变量注入",
+    title: '从固定提示词到上下文工程——动态变量的系统级注入',
+    desc: "模板引擎，Agent 工作流",
   },
 ];
 
 const archCompareData = [
   {
     type: "old",
-    title: "旧时代架构",
-    flow: "附件 → 文件解析器/提取器 → 纯文本 → LLM",
-    issue: "信息损耗严重，丢失排版、颜色、空间关系",
+    title: "传统 Web 附件思维",
+    flow: "语音 → ASR → 文本 → NLP → TTS → 语音",
+    issue: "级联式处理：延迟极高，语气/情绪信息严重丢失",
   },
   {
     type: "new",
-    title: "新一代架构 - 全模态模型",
-    flow: "图像 Patch、音频帧与文本 Token 在底层 Transformer 中被映射到同一高维隐空间 (Latent Space)",
+    title: "端到端全模态架构",
+    flow: "音频/视频/文本 → 统一多模态特征空间 → 跨模态理解与生成",
     issue: "",
   },
 ];
@@ -65,18 +65,18 @@ const archCompareData = [
 const conceptCardsData = [
   {
     icon: "🧬",
-    title: "原生 Native",
-    desc: "设计之初将多模态能力作为基因",
+    title: "万物皆 Token",
+    desc: "文本、图像、音频被统一编码为交错 Token 数组",
   },
   {
-    icon: "🏗️",
-    title: "统一架构",
-    desc: "统一编码器+Transformer 融合理解",
+    icon: "🌌",
+    title: "统一特征空间",
+    desc: "所有模态映射到同一高维隐空间，不再有主次之分",
   },
   {
-    icon: "⚡",
-    title: "原生 I/O",
-    desc: "直接接收音视频原始信号",
+    icon: "🚀",
+    title: "从处理文件到处理序列",
+    desc: "现代开发中多模态输入变成了可统一处理的 Token 序列",
   },
 ];
 
@@ -84,37 +84,37 @@ const modelsData = [
   {
     name: "GPT-4o",
     org: "OpenAI",
-    feature: "首个端到端统一架构，实时音视频交互",
+    feature: "首个端到端统一架构，音频/视频/文本原生输入，极低延迟跨模态交互",
   },
   {
     name: "Gemini 3.1 Pro",
     org: "Google",
-    feature: "1 小时视频 +8.4 小时音频处理",
+    feature: "1 小时视频 +8.4 小时音频处理，统一多模态特征空间",
   },
   {
     name: "Claude Opus 4.5",
     org: "Anthropic",
-    feature: "视觉分析、图表理解出色",
+    feature: "视觉分析、图表理解出色，空间关系与语义融合",
   },
   {
     name: "Qwen3.5-Omni",
     org: "阿里通义",
-    feature: "113 语种，215 项任务 SOTA",
+    feature: "113 语种，215 项任务 SOTA，混合注意力 MoE 架构",
   },
   {
     name: "Kimi K2.5",
     org: "月之暗面",
-    feature: "跨模态推理和视觉智能体",
+    feature: "跨模态推理和视觉智能体，大规模混合预训练",
   },
   {
     name: "MiMo-V2-Omni",
     org: "小米",
-    feature: "原生融合感知、GUI 操作",
+    feature: "原生融合感知、GUI 操作，面向 Agent 时代",
   },
   {
     name: "Nemotron 3 Omni",
     org: "NVIDIA",
-    feature: "融合音视文理解与原生工具调用，赋能代理式 AI 应用",
+    feature: "融合音视文理解与原生工具调用，赋能代理式 AI 应用构建",
   },
   {
     name: "Kling 3.0 Omni",
@@ -126,18 +126,18 @@ const modelsData = [
 const ocrStagesData = [
   {
     title: "外置 OCR 管道",
-    steps: ["OCR 工具", "提取文字", "纯文本模型"],
-    desc: "Tesseract / PaddleOCR 扫描图片 → 喂给 LLM 做阅读理解",
+    steps: ["OCR 工具", "干瘪字符", "零散输入"],
+    desc: "只提取文字，丢失排版、颜色、空间关系等物理上下文",
   },
   {
-    title: "原生三部走",
-    steps: ["视觉编码器 ViT", "映射层 Projector", "大语言模型 LLM"],
-    desc: "视觉 Token → 翻译到词嵌入空间 → LLM 理解推理",
+    title: "VLM 特征驱动",
+    steps: ["视觉编码器 ViT", "高维向量", "空间与语义融合"],
+    desc: "不仅认识字，还理解整体场景、空间关系与环境氛围",
   },
   {
-    title: "原生融合",
-    steps: ["路线一：离散 Token 化", "路线二：端到端原生"],
-    desc: '统一"离散 Token"序列 或 重构底层注意力机制',
+    title: "共生架构",
+    steps: ["VLM 路由理解", "局部 OCR 调用", "极高精度输出"],
+    desc: "VLM 负责整体理解和路由，高精度场景调用轻量级 OCR 工具",
     highlight: true,
   },
 ];
@@ -338,8 +338,8 @@ onUnmounted(() => {
         </div>
         <div class="part-content">
           <span class="part-badge slide-up">PART - 1</span>
-          <h2 class="part-title slide-up delay-1">从纯文本到全模态</h2>
-          <p class="part-subtitle slide-up delay-2">AI "感知系统"的代际跃迁</p>
+          <h2 class="part-title slide-up delay-1">告别附件拼接</h2>
+          <p class="part-subtitle slide-up delay-2">原生全模态的架构跃迁</p>
         </div>
         <div class="part-decoration-right">
           <img
@@ -362,7 +362,7 @@ onUnmounted(() => {
       >
         <div class="content-wrapper">
           <h2 class="slide-intro-title fade-in">
-            从纯文本到全模态：AI "感知系统"的代际跃迁
+            传统附件思维 vs 统一特征空间
           </h2>
 
           <div class="omni-evolution-layout">
@@ -387,10 +387,10 @@ onUnmounted(() => {
                 <div class="stack-item">
                   <img
                     src="/images/illustrated.webp"
-                    alt="大模型图文输出"
+                    alt="端到端全模态架构"
                     class="evolution-image"
                   />
-                  <span class="image-label">大模型图文并茂输出示例</span>
+                  <span class="image-label">端到端全模态架构：音频/视频/文本统一输入</span>
                 </div>
               </div>
             </div>
@@ -432,8 +432,8 @@ onUnmounted(() => {
         </div>
         <div class="part-content">
           <span class="part-badge slide-up">PART - 2</span>
-          <h2 class="part-title slide-up delay-1">OCR 3.0</h2>
-          <p class="part-subtitle slide-up delay-2">从"看见字符"到"理解文档"</p>
+          <h2 class="part-title slide-up delay-1">杀死传统 OCR</h2>
+          <p class="part-subtitle slide-up delay-2">空间与语义的融合理解</p>
         </div>
         <div class="part-decoration-right">
           <img
@@ -449,7 +449,7 @@ onUnmounted(() => {
         </div>
       </div>
 
-      <!-- Slide 8: OCR 架构对比 + 三代演进（左右结构） -->
+      <!-- Slide 8: OCR vs VLM 对比 + 共生架构（左右结构） -->
       <div
         class="slide slide-7 content-slide"
         :class="{ active: currentSlide === 7 }"
@@ -457,17 +457,17 @@ onUnmounted(() => {
         <div class="content-wrapper">
           <div class="ocr-split-layout">
             <div class="ocr-left fade-in">
-              <h3 class="ocr-subtitle">架构对比</h3>
+              <h3 class="ocr-subtitle">OCR 只看见干瘪字符</h3>
               <div class="ocr-arch-image">
                 <img
                   src="/images/ocr_low.png"
-                  alt="OCR 架构对比"
+                  alt="OCR 丢失空间上下文"
                   class="ocr-arch-img"
                 />
               </div>
             </div>
             <div class="ocr-right slide-up">
-              <h3 class="ocr-subtitle">三代演进</h3>
+              <h3 class="ocr-subtitle">VLM 理解空间与语义</h3>
               <div class="ocr-stages-vertical">
                 <div
                   class="stage-card"
@@ -513,9 +513,9 @@ onUnmounted(() => {
         </div>
         <div class="part-content">
           <span class="part-badge slide-up">PART - 3</span>
-          <h2 class="part-title slide-up delay-1">动态变量</h2>
+          <h2 class="part-title slide-up delay-1">从固定提示词到上下文工程</h2>
           <p class="part-subtitle slide-up delay-2">
-            从固定提示词到"上下文工程"
+            动态变量的系统级注入
           </p>
         </div>
         <div class="part-decoration-right">
@@ -572,42 +572,39 @@ onUnmounted(() => {
         <div class="content-wrapper">
           <div class="practice-layout">
             <div class="practice-left fade-in">
-              <h2 class="practice-title">多模态附件输入 · 实践案例</h2>
+          <h2 class="practice-title">上下文工程的工程价值</h2>
 
-              <div class="practice-points">
-                <div class="practice-point">
-                  <div class="point-icon">📎</div>
-                  <div class="point-content">
-                    <h3>附件上传新范式</h3>
-                    <p>
-                      支持图片、PDF、Word、Excel 等多格式混传，AI
-                      自动识别内容类型并提取关键信息
-                    </p>
-                  </div>
-                </div>
-
-                <div class="practice-point">
-                  <div class="point-icon">🧩</div>
-                  <div class="point-content">
-                    <h3>动态变量注入</h3>
-                    <p>
-                      通过 AST
-                      解析提示词模板，自动注入用户偏好配置，实现千人千面的 AI
-                      响应
-                    </p>
-                  </div>
-                </div>
-
-                <div class="practice-point">
-                  <div class="point-icon">⚡</div>
-                  <div class="point-content">
-                    <h3>实时反馈管道</h3>
-                    <p>
-                      交错序列协议确保多模态输入同步处理，用户等待时间降低 70%
-                    </p>
-                  </div>
-                </div>
+          <div class="practice-points">
+            <div class="practice-point">
+              <div class="point-icon">🚀</div>
+              <div class="point-content">
+                <h3>提升自动化效率</h3>
+                <p>
+                  从固定提示词到动态上下文注入，实现千人千面的 AI 响应，无需人工干预
+                </p>
               </div>
+            </div>
+
+            <div class="practice-point">
+              <div class="point-icon">📊</div>
+              <div class="point-content">
+                <h3>核心数据结构化</h3>
+                <p>
+                  将非结构化附件（PDF/图片）转化为结构化变量，带来更客观的 LLM 评估
+                </p>
+              </div>
+            </div>
+
+            <div class="practice-point">
+              <div class="point-icon">🧩</div>
+              <div class="point-content">
+                <h3>高可扩展性</h3>
+                <p>
+                  模板引擎 + Agent 工作流模式，可快速适配招聘/客服/数据分析等不同业务场景
+                </p>
+              </div>
+            </div>
+          </div>
             </div>
 
             <div class="practice-right slide-up">

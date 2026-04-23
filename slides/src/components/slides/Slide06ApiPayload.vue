@@ -8,14 +8,13 @@ const props = defineProps({
   },
 });
 
-const codeSnippet = `{
-  "content": [
-    {"type": "text", "text": "分析这个系统架构图："},
-    {"type": "image_url", "url": "data:image/jpeg;base64,..."},
-    {"type": "text", "text": "并结合这个日志文件找 bug："},
-    {"type": "document", "file_id": "file-xyz"}
-  ]
-}`;
+const codeSnippet = `[
+  {"type": "text", "text": "分析这个系统架构图"},
+  {"type": "image", "data": "<base64_image>"},
+  {"type": "text", "text": "找出潜在问题"},
+  {"type": "audio", "data": "<audio_frames>"},
+  {"type": "video", "data": "<video_patches>"}
+]`;
 </script>
 
 <template>
@@ -24,8 +23,8 @@ const codeSnippet = `{
       <div class="api-key-point slide-left">
         <div class="point-icon">🔄</div>
         <div class="point-text">
-          <strong>Payload 不再是单一的</strong>
-          <code>content: "..."</code>
+          <strong>交错 Token 序列 (Interleaved Token Stream)</strong>
+          <span>文本/图像/音频/视频统一编码为数组</span>
         </div>
       </div>
       
@@ -44,7 +43,7 @@ const codeSnippet = `{
       
       <div class="api-note fade-in">
         <span class="note-icon">💡</span>
-        <span>多模态内容通过结构化数组传递，每个元素明确指定类型和内容</span>
+        <span>万物皆可 Token 化：多模态输入在底层被映射到同一高维隐空间，不再有主体与附件之分</span>
       </div>
     </div>
   </div>
